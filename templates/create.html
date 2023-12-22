@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New task {% endblock %}</h1>
+
+<form method='POST' action="{{ url_for('create') }}">
+    <div class="form-group">
+        <label for="tName">Title</label>
+        <input type="text" name="tName" placeholder="Task name" 
+                    class="form-control" value="{{ request.form['tName'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="tDescription">Content</label>
+        <textarea name="tDescription" placeholder="Task description"
+                  class="form-control">{{ request.form['tDescription'] }}</textarea>
+    </div>
+
+    <div class="form-group"> <!-- Date input -->
+        <label for="endDate">DueDate</label>
+        <input type="text" name="endDate" placeholder="YYYY/MM/DD" 
+                    class="form-control" value = "{{ request.form['endDate'] }}"></input>
+    </div>
+
+    <div class = "form-group">
+        <button type = "submit" class = "btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}
